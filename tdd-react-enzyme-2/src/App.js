@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React from 'react';
+import { useSetRecoilState } from 'recoil';
+import { secretWordState } from './store/atoms';
+import SecretWord from './components/SecretWord/SecretWord';
 
 function App() {
+  const secretWords = ['flower','plant','apple','elephant','rhyme'];
+  const randomizedWord = secretWords[Math.floor(Math.random() * secretWords.length)];
+  const setSecretWord = useSetRecoilState(secretWordState);
+
+  React.useEffect(() => {
+    setSecretWord(randomizedWord);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <SecretWord />
+      </div>
   );
 }
 
