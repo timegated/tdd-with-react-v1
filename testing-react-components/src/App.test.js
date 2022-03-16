@@ -1,68 +1,38 @@
 // import { render, screen } from '@testing-library/react';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render, fireEvent } from '@testing-library/react';
 import Counter from './components/Counter';
 
 beforeEach(() => {
   document.body.innerHTML = '';
 });
 
-// Initial Value 
-test('renders counter component', () => {
-  const div = document.createElement('div');
-  document.body.append(div);
-  ReactDOM.render(<Counter />, div);
-
-  const counter = document.body.querySelector('.counter');
-  expect(counter.textContent).toBe('count: 0');
-  console.log(document.body.innerHTML);
-});
-
 // Increment
 test('increments counter on click', () => {
-  const div = document.createElement('div');
-  document.body.append(div);
-  ReactDOM.render(<Counter />, div);
+  const { container } = render(<Counter />);
+  const message = container.querySelector('.counter');
+  const increment = container.querySelector('.increment');
 
-  const counter = document.body.querySelector('.counter');
-  expect(counter.textContent).toBe('count: 0');
   console.log(document.body.innerHTML);
 
   // Interactions
-  const incrementClickEvent = new MouseEvent('click', {
-    bubbles: true,
-    cancelable: true,
-    button: 0,
-  });
+  fireEvent.click(increment);
 
-  const increment = document.querySelector('.increment');
 
-  // increment.click();
-  increment.dispatchEvent(incrementClickEvent);
-  expect(counter.textContent).toBe('count: 1');
-  console.log(document.body.innerHTML);
+  expect(message.textContent).toBe('count: 1');
 });
 
 // Decrement
 test('decrements counter on click', () => {
-  const div = document.createElement('div');
-  document.body.append(div);
-  ReactDOM.render(<Counter />, div);
-
-  const counter = document.body.querySelector('.counter');
-  expect(counter.textContent).toBe('count: 0');
-
-  // Interactions
-  const decrement = document.querySelector('.decrement');
-  const decrementClickEvent = new MouseEvent('click', {
-    bubbles: true,
-    cancelable: true,
-    button: 0,
-  });
-
-  // decrement.click();
-  decrement.dispatchEvent(decrementClickEvent);
-  expect(counter.textContent).toBe('count: -1');
+  const { container } = render(<Counter />);
+  const message = container.querySelector('.counter');
+  const decrement = container.querySelector('.decrement');
 
   console.log(document.body.innerHTML);
+
+  // Interactions
+  fireEvent.click(decrement);
+
+
+  expect(message.textContent).toBe('count: -1');
 });
