@@ -29,9 +29,16 @@ test('increments counter on click', () => {
   console.log(document.body.innerHTML);
 
   // Interactions
+  const incrementClickEvent = new MouseEvent('click', {
+    bubbles: true,
+    cancelable: true,
+    button: 0,
+  });
+
   const increment = document.querySelector('.increment');
 
-  increment.click();
+  // increment.click();
+  increment.dispatchEvent(incrementClickEvent);
   expect(counter.textContent).toBe('count: 1');
   console.log(document.body.innerHTML);
 });
@@ -47,9 +54,14 @@ test('decrements counter on click', () => {
 
   // Interactions
   const decrement = document.querySelector('.decrement');
+  const decrementClickEvent = new MouseEvent('click', {
+    bubbles: true,
+    cancelable: true,
+    button: 0,
+  });
 
-
-  decrement.click();
+  // decrement.click();
+  decrement.dispatchEvent(decrementClickEvent);
   expect(counter.textContent).toBe('count: -1');
 
   console.log(document.body.innerHTML);
