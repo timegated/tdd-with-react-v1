@@ -1,5 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Root App Component renders a SecretWord Component renders learn react link 1`] = `ReactWrapper {}`;
-
-exports[`The Root App Component renders learn react link 1`] = `ReactWrapper {}`;
