@@ -7,13 +7,19 @@ import React from 'react';
  * @returns {React.Component}
  */
 const Congrats = ({ success }) => {
-  return (
+  return (success ? (
     <section data-test="congrats">
       <span data-test="congrats-message">
-        {success ? 'Congrats!' : ''}
+        Congrats! You're the winner!
       </span>
     </section>
-  );
+  ) : (
+    <section data-test="congrats">
+    <span data-test="congrats-message">
+    {''}
+    </span>
+  </section>
+  ));
 };
 
 export default Congrats;

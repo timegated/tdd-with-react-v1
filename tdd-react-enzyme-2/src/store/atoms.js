@@ -1,5 +1,6 @@
-import { secretWordState } from './secretword/atoms';
+import { secretWordState, guessedWordState } from './secretword/atoms';
 
 export {
   secretWordState,
+  guessedWordState,
 };

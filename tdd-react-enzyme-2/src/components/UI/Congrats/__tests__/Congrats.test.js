@@ -32,6 +32,6 @@ describe('Congrats component behavior', () => {
     const container = findByTestAttr(wrapper, 'congrats');
 
     expect(container.text()).not.toBe('');
-    expect(container.text()).toBe('Congrats!');
+    expect(container.text()).toBe('Congrats! You\'re the winner!');
   });
 });
