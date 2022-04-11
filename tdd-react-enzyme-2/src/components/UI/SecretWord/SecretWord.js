@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import { randomWordState } from '../../store/selectors';
+import { randomWordState } from '../../../store/selectors';
 
 const SecretWord = () => {
   const secretWord = useRecoilValue(randomWordState);

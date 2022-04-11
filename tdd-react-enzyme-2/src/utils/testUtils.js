@@ -1,4 +1,5 @@
 import checkPropTypes from 'check-prop-types';
+import { shallow } from 'enzyme';
 
 /**
  * Return node(s) with the given data-test attribute.
@@ -25,3 +26,13 @@ export const checkProps = (component, conformingProps) => {
     component.name);
   expect(propError).toBeUndefined();
 }
+
+
+/**
+ * Renders the component in a test env with optional props
+ * @param {*} props 
+ * @returns {React.Component}
+ */
+ export const setup = (component, props = {}) => {
+  return shallow(component, {...props});
+};
