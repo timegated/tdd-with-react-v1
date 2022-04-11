@@ -1,13 +1,15 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { build, fake } from '@jackfranklin/test-data-bot';
+import { faker } from '@faker-js/faker';
+import { build, perBuild } from '@jackfranklin/test-data-bot';
+import { rest } from 'msw';
 import Form from './Form';
 
 const buildLoginForm = build({
   fields: {
-    username: fake(f => f.internet.userName()),
-    password: fake(f => f.internet.password()),
+    username: perBuild(() => faker.internet.userName()),
+    password: perBuild(() => faker.internet.password()),
   }
 });
 
